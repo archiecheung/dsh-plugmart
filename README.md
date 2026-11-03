@@ -34,7 +34,6 @@ npx @deepseek-ai/dsh plugin --profile <profile> add dsh-plugmart
 | 分页 | 每页 24 条，「加载更多」追加 |
 | 详情 | 右侧滑出：完整描述、作者、星标、更新时间、全部标签、安装命令（复制）、主页链接；Esc 关闭 |
 | 刷新 | 一键拉取社区在线索引；失败时保留当前数据并给出中性提示（离线/超时/其他） |
-| 打赏区 | 已内置作者赞赏码：列表底部一张低调的「支持作者」卡片，点开展示二维码（可关闭，见下） |
 
 ## 数据来源与口径
 
@@ -45,32 +44,13 @@ npx @deepseek-ai/dsh plugin --profile <profile> add dsh-plugmart
   成功后重建索引并缓存到 `$DSH_HOME/plugins/plugin-market/data.json`（下次启动优先使用更新的缓存）。
 - **「使用人数」口径**：公开索引没有安装数遥测，唯一公开的使用热度信号是 GitHub 星标数（`stars`），并以社区综合分（`score`）作为同星标的 tie-break。UI 上已用「使用人数按社区星标热度排序」明确说明，**不展示编造的安装量**。
 
-## 打赏 / 支持作者
+## 支持作者
 
-本插件**默认展示作者的微信赞赏码**：市场列表底部有一张「支持作者」卡片，点「查看打赏方式」弹出面板显示二维码。不弹窗、不打断浏览，也不影响搜索和安装。
+这个插件免费开源、纯本地运行、不采集任何数据。如果它帮你省了时间，欢迎扫码请我喝杯咖啡（完全自愿，不影响任何功能）。
 
-- **想关掉**：把 `data/sponsor.json` 里的 `"enabled": true` 改成 `false`，整块会消失。
-- **想换成自己的**：复制 `data/sponsor.example.json`，填写 `links`（`http(s)` 链接）和/或 `qrcodes`（二维码），替换 `data/sponsor.json` 即可。
-- **不改安装包也能覆盖**：在 `$DSH_HOME/plugins/plugin-market/sponsor.json` 放一份同格式配置（优先于包内配置，适合本地预览）。
+<img src="assets/sponsor-qr.jpg" alt="微信赞赏码" width="240" />
 
-配置示例：
-
-```json
-{
-  "enabled": true,
-  "title": { "zh": "支持作者", "en": "Support the author" },
-  "note": { "zh": "如果它帮你省了时间，欢迎请作者喝杯咖啡。", "en": "..." },
-  "links": [{ "label": "爱发电", "url": "https://afdian.com/a/your-name" }],
-  "qrcodes": [{ "label": { "zh": "微信赞赏码", "en": "WeChat" }, "src": "data:image/jpeg;base64,..." }]
-}
-```
-
-规则：
-
-- 链接只接受 `http(s)`，`javascript:` / `ftp:` 等会被宿主丢弃
-- 二维码只接受 `data:image/(png|jpeg|webp);base64,...`（≤512KB）或 `https` 图片地址
-- 没有可用条目时整块自动隐藏
-- 生成 base64：`printf 'data:image/png;base64,'; base64 -i wechat.png | tr -d '\n'`
+> 想自己二次开发的话：`data/sponsor.json` 里也留了一个**默认关闭**的可选打赏区，填上链接或二维码并设为 `enabled: true` 即可在面板底部显示（格式见 `data/sponsor.example.json`）。
 
 ## 结构
 
@@ -79,7 +59,8 @@ index.js           宿主半边：export const inject = ['webServer']，注册 P
 client.js          浏览器半边：sidebar.panellist + main 面板（原生 JS + React.createElement）
 lib/search.js      纯函数：归一化 / 匹配 / 三种排序 / 标签分面 / 分页
 data/market.json   内置快照（700 条）
-data/sponsor.json  打赏配置（当前 enabled: true，内置作者赞赏码）
+data/sponsor.json  可选打赏配置（默认关闭，作者未启用）
+assets/sponsor-qr.jpg  README 里的作者赞赏码
 locale/{zh,en}.json  插件列表中的显示标题与描述
 icon.svg           插件图标（原创）
 cordis.patch.yml   bundle patch：插入行 local-plugin-market（避免与官方 market 行 id 冲突）

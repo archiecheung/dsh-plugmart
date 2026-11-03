@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugmart",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "description": "DSH 插件市场 / plugin marketplace: left-sidebar entry to browse, search and rank DSH plugins by usage, with an optional support area.",
   "license": "MIT",
@@ -47,6 +47,7 @@
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg",
+    "assets",
     "LICENSE",
     "README.md"
   ],
