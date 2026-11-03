@@ -1,0 +1,64 @@
+{
+  "name": "dsh-plugmart",
+  "version": "1.1.0",
+  "type": "module",
+  "description": "DSH 插件市场 / plugin marketplace: left-sidebar entry to browse, search and rank DSH plugins by usage, with an optional support area.",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "marketplace",
+    "plugin-market",
+    "dsh-plugin",
+    "dsh-plugmart"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "homepage": "https://github.com/archiecheung/dsh-plugmart#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archiecheung/dsh-plugmart.git"
+  },
+  "bugs": {
+    "url": "https://github.com/archiecheung/dsh-plugmart/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "check": "node --check index.js && node --check client.js && node --check lib/search.js",
+    "test": "node --test test/search.test.mjs",
+    "publish:stage": "node scripts/prepare-publish.mjs"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib",
+    "data",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "LICENSE",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    }
+  },
+  "author": "archiecheung"
+}
