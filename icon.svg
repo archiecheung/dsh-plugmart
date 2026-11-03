@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Plugin Market">
+  <defs>
+    <linearGradient id="pm-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4C6FFF"/>
+      <stop offset="1" stop-color="#7B4CFF"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#pm-bg)"/>
+  <path d="M12 26.5 16.5 15h31L52 26.5c0 3.2-2.6 5.8-5.8 5.8-2.4 0-4.5-1.5-5.4-3.5-1 2-3.1 3.5-5.5 3.5s-4.5-1.5-5.5-3.5c-1 2-3.1 3.5-5.5 3.5S18.7 31 17.8 29c-1 2-3 3.3-5.3 3.3-0.2 0-0.4 0-0.5 0z" fill="#FFFFFF" opacity="0.96"/>
+  <rect x="15" y="33" width="34" height="17" rx="3.5" fill="#FFFFFF" opacity="0.96"/>
+  <rect x="21.5" y="39" width="4" height="6.5" rx="1.4" fill="#4C6FFF"/>
+  <rect x="28.5" y="36.5" width="4" height="9" rx="1.4" fill="#6B5BFF"/>
+  <rect x="35.5" y="33.8" width="4" height="11.7" rx="1.4" fill="#8B4CFF"/>
+  <circle cx="46.5" cy="45" r="4.2" fill="#FFC94C"/>
+</svg>
